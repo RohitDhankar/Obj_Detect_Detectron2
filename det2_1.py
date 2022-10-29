@@ -37,14 +37,38 @@ from detectron2.data import MetadataCatalog, DatasetCatalog
 #!wget http://images.cocodataset.org/val2017/000000439715.jpg -q -O input.jpg
 coco_test_image = cv2.imread("./input.jpg")
 print("---type(coco_test_image",type(coco_test_image)) ## ---type(coco_test_image <class 'numpy.ndarray'>
-#(env2_det2) dhankar@dhankar-1:~/.../coco_val_images_2017$ wget http://images.cocodataset.org/val2017/
-
-wget http://images.cocodataset.org/zips/train2017.zip
-wget http://images.cocodataset.org/zips/val2017.zip
-wget http://images.cocodataset.org/zips/test2017.zip
-wget http://images.cocodataset.org/zips/unlabeled2017.zip
 
 
+## INIT ANNO 
+import json
+path_validate = "/home/dhankar/temp/11_22/a___own_git_up/detect2/Obj_Detect_Detectron2/coco_val_images_2017/coco_train_2017/annotations/instances_val2017.json"
+path_train = "/home/dhankar/temp/11_22/a___own_git_up/detect2/Obj_Detect_Detectron2/coco_val_images_2017/coco_train_2017/annotations/instances_train2017.json"
+
+f_train_annos = open(path_train)
+anno_train = json.load(f_train_annos)
+print("---ANNO--Keys---",anno_train.keys())
+print("---ANNO--Keys---",anno_train["images"][1])
+print("---ANNO--Keys----annotations-",anno_train["annotations"][1])
+
+from pycocotools.coco import COCO
+
+coco_obj=COCO(path_train)
+#print(type(coco_obj)) ##<class 'pycocotools.coco.COCO'>
+
+# Get list of category_ids, here [2] for bicycle
+category_ids = coco_obj.getCatIds(['bicycle'])
+
+# Get list of image_ids which contain bicycles
+image_ids = coco_obj.getImgIds(catIds=[2])
+print(image_ids[0:10])
+"""
+loading annotations into memory...
+Done (t=9.13s)
+creating index...
+index created!
+<class 'pycocotools.coco.COCO'>
+[196610, 344067, 155652, 417797, 294918, 57353, 516105, 253965, 229391, 57361]
+"""
 
 
 
