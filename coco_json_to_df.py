@@ -17,33 +17,35 @@ def convert_coco_json_to_csv(filename):
         # COCO2017/annotations/instances_val2017.json
         s = json.load(open(filename, 'r'))
         #out_file = filename[:-5] + '.csv'
-        out_file = "TEST_ANNOS_1.csv"
+        out_file = "TEST_ANNOS_3.csv"
         out = open(out_file, 'w')
-        out.write('id,x1,y1,x2,y2,label\n')
+        out.write('id,x1,y1,x2,y2,label,other_id,bbox_area\n')
 
         all_ids = []
         for im in s['images']:
-            all_ids.append(im['id'])
+            all_ids.append(str(im['id']))
 
         print("---len(all_ids---",len(all_ids)) #5k
 
         all_ids_ann = []
         for ann in s['annotations']:
-            image_id = ann['image_id']
+            image_id = str(ann['image_id'])
+            other_id = str(ann['id'])
+            bbox_area = str(ann['area'])
             all_ids_ann.append(image_id)
             x1 = ann['bbox'][0]
             x2 = ann['bbox'][0] + ann['bbox'][2]
             y1 = ann['bbox'][1]
             y2 = ann['bbox'][1] + ann['bbox'][3]
             label = ann['category_id']
-            out.write('{},{},{},{},{},{}\n'.format(image_id, x1, y1, x2, y2, label))
+            out.write('{},{},{},{},{},{},{},{}\n'.format(image_id, x1, y1, x2, y2, label,other_id,bbox_area))
 
         all_ids = set(all_ids)
         all_ids_ann = set(all_ids_ann)
         no_annotations = list(all_ids - all_ids_ann)
         # Output images without any annotations
         for image_id in no_annotations:
-            out.write('{},{},{},{},{},{}\n'.format(image_id, -1, -1, -1, -1, -1))
+            out.write('{},{},{},{},{},{},{},{}\n'.format(image_id, -1, -1, -1, -1, -1,-1,-1))
         out.close()
 
         # Sort file by image id
