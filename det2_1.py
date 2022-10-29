@@ -37,8 +37,8 @@ from detectron2.data import MetadataCatalog, DatasetCatalog
 ## First steps with COCO Data 
 
 #!wget http://images.cocodataset.org/val2017/000000439715.jpg -q -O input.jpg
-coco_test_image = cv2.imread("./input.jpg")
-print("---type(coco_test_image",type(coco_test_image)) ## ---type(coco_test_image <class 'numpy.ndarray'>
+# coco_test_image = cv2.imread("./input.jpg")
+# print("---type(coco_test_image",type(coco_test_image)) ## ---type(coco_test_image <class 'numpy.ndarray'>
 
 
 ## INIT ANNO 
@@ -84,7 +84,7 @@ VALIDATION SET
 
 """
 
-# Get all bicycle annotations for TRAIN SET --image 000000196610.jpg
+# Get all bicycle annotations for TRAIN SET --image 0000 0019 6610.jpg
 # Get all bicycle annotations for VAL SET --  image 000000093717.jpg
 
 #image_id = 343561 #93717 #169996
@@ -123,4 +123,9 @@ for iter_image in range(len(ls_image_ids_bikes)):
 
     ax.imshow(image)
     plt.show()
+
+"""
+Explore the --standard-dataset-dicts -->>
+ https://detectron2.readthedocs.io/en/latest/tutorials/datasets.html?highlight=bbox_mode#standard-dataset-dicts
+"""
 
