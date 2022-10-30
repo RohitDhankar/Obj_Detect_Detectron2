@@ -43,8 +43,8 @@ from detectron2.data import MetadataCatalog, DatasetCatalog
 
 ## INIT ANNO 
 import json
-path_validate = "/home/dhankar/temp/11_22/a___own_git_up/detect2/Obj_Detect_Detectron2/coco_val_images_2017/coco_train_2017/annotations/instances_val2017.json"
-path_train = "/home/dhankar/temp/11_22/a___own_git_up/detect2/Obj_Detect_Detectron2/coco_val_images_2017/coco_train_2017/annotations/instances_train2017.json"
+path_validate = "./coco_val_images_2017/coco_train_2017/annotations/instances_val2017.json" ##/home/dhankar/temp/11_22/a___own_git_up/detect2/Obj_Detect_Detectron2
+#path_train = "./coco_val_images_2017/coco_train_2017/annotations/instances_train2017.json" ##/home/dhankar/temp/11_22/a___own_git_up/detect2
 
 # f_train_annos = open(path_train)
 # anno_train = json.load(f_train_annos)
