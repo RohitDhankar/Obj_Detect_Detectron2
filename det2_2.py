@@ -163,29 +163,54 @@ class std_data_dicts():
 
         """
 
-    def get_gt_bbox_viz(self,coco_image_forViz,coco_data_metaData,detectron2_output_dir,str_score_thresh_for_viz):
+    def get_gt_bbox_viz(self,testing_image_path,coco_image_forViz,coco_data_metaData,detectron2_output_dir,str_score_thresh_for_viz):
         """
         Args:
 
         Returns:
         
         """
+        test_image = cv2.imread(testing_image_path)
+        print("-[INFO-get_gt_bbox_viz]---Type(test_image",type(test_image))
+        default_predictor = self.predictor(test_image)
         
-        visualizer = Visualizer(coco_image_forViz,metadata = coco_data_metaData)#,instance_mode=ColorMode.IMAGE_BW)#, scale=2.5)
-        coco_img_viz = visualizer.draw_instance_predictions(outputs["instances"].to("cpu"))
-        save_coco_img = str(str_image_id)+"_"+str(str_score_thresh_for_viz)
+        visualizer = Visualizer(test_image,metadata = MetadataCatalog.get(self.get_config.DATASETS.TRAIN[0]))#,
+        #visualizer = Visualizer(coco_image_forViz,metadata = coco_data_metaData)#,instance_mode=ColorMode.IMAGE_BW)#, scale=2.5)
+        #coco_img_viz = visualizer.draw_instance_predictions(outputs["instances"].to("cpu"))
+        
+        print("--[INFO-get_gt_bbox_viz]--type(default_predictor---\n",type(default_predictor))
+        print("--[INFO-get_gt_bbox_viz]---type(default_predictor[instances] ---\n",type(default_predictor["instances"]))
+        ## <class 'detectron2.structures.instances.Instances'>
+        instance_obj = default_predictor["instances"]
+        #print("---instance_obj---> 1 ",instance_obj.num_instances)
+        #print("---instance_obj--->pred_classes ",type(instance_obj.pred_classes)) ##<class 'torch.Tensor'>
+        print("--[INFO-get_gt_bbox_viz]---instance_obj--->pred_classes ",instance_obj.pred_classes)
+
+        result_image = visualizer.draw_instance_predictions(default_predictor["instances"].to("cpu"))
+        #save_coco_img = str(str_image_id)+"_"+str(str_score_thresh_for_viz)
         save_coco_img_path = detectron2_output_dir + "/_dir_img_gt_bbox_/"+str(dt_time_save)+"/"
         if not os.path.exists(save_coco_img_path):
             os.makedirs(save_coco_img_path)
-        cv2.imwrite(save_coco_img_path+str(save_coco_img)+"_.png",coco_img_viz.get_image())
+        #cv2.imwrite(save_coco_img_path+str(save_coco_img)+"_.png",result_image.get_image())
+        cv2.imwrite(save_coco_img_path+"test_gt_bbox_.png",result_image.get_image())
 
 
 if __name__ == "__main__":
+    detectron2_output_dir = "./output_dir/" #
+    str_score_thresh_for_viz = 0.70
+    coco_data_metaData = "TODO"
+    coco_image_forViz = "TODO"
+    testing_image_path = "./coco_val_images_2017/val2017/000000078823.jpg" 
+    #./coco_val_images_2017/val2017/000000494869.jpg
+    #./coco_val_images_2017/val2017/000000554002.jpg 
+
+
     obj_std_dicts = std_data_dicts()
     init_anno_path = "df_out_coco_urls.csv" ## dt_time_save
     read_file_rows = 100 #30000 # 30K
     chunk_idx = 0
-    ls_coco_std_data_dicts = obj_std_dicts.get_std_data_dict(init_anno_path,read_file_rows,chunk_idx)
-    #obj_std_dicts.get_gt_bbox_viz()
+    #ls_coco_std_data_dicts = obj_std_dicts.get_std_data_dict(init_anno_path,read_file_rows,chunk_idx)
+
+    obj_std_dicts.get_gt_bbox_viz(testing_image_path,coco_image_forViz,coco_data_metaData,detectron2_output_dir,str_score_thresh_for_viz)
 
 
