@@ -1,4 +1,5 @@
 
+## Local Path -- detect2/Obj_Detect_Detectron2/coco_json_to_df.py
 ## TODO -- https://github.com/laclouis5/globox
 ## SO CODE USED -- https://stackoverflow.com/questions/62251509/coco-json-file-to-csv-format-path-to-image-jpg-x1-y1-x2-y2-class-name
 
@@ -31,8 +32,6 @@ def convert_coco_json_to_csv(filename):
         ls_coco_urls = []
         ls_images_file_name = []
         ls_images_local_path = []
-
-
         ls_image_id = []#str(ann['image_id'])
         ls_other_id = []#str(ann['id'])
         ls_bbox_area = []#str(ann['area'])
@@ -42,6 +41,8 @@ def convert_coco_json_to_csv(filename):
         ls_x2 = []
         ls_y1 = []
         ls_y2 = []
+
+        ## TODO --All lists INIT on same One Line 
 
 
         for key_img in json_val_input['images']:

@@ -63,3 +63,85 @@ Installing collected packages: sseclient-py, sortedcontainers, rfc3986, pprintpp
 Successfully installed Deprecated-1.2.13 Jinja2-3.1.2 PyWavelets-1.4.1 aiofiles-22.1.0 anyio-3.6.2 argcomplete-2.0.0 backports.cached-property-1.0.2 boto3-1.25.4 botocore-1.28.4 dacite-1.6.0 dill-0.3.6 dnspython-2.2.1 eventlet-0.33.1 fiftyone-0.17.2 fiftyone-brain-0.9.1 fiftyone-db-0.3.0 glob2-0.7 graphql-core-3.1.7 greenlet-1.1.3.post0 h11-0.12.0 h2-4.1.0 hpack-4.0.0 httpcore-0.15.0 httpx-0.23.0 hypercorn-0.14.3 hyperframe-6.0.1 imageio-2.22.2 jmespath-1.0.1 joblib-1.2.0 kaleido-0.2.1 mongoengine-0.20.0 motor-2.5.1 ndjson-0.3.1 networkx-2.8.7 opencv-python-headless-4.6.0.66 patool-1.12 plotly-5.11.0 pprintpp-0.4.0 priority-2.0.0 psutil-5.9.3 pymongo-3.12.3 python-multipart-0.0.5 pytz-deprecation-shim-0.1.0.post0 retrying-1.3.3 rfc3986-1.5.0 s3transfer-0.6.0 scikit-image-0.19.3 scikit-learn-1.1.3 scipy-1.9.3 sentinel-0.3.0 sniffio-1.3.0 sortedcontainers-2.4.0 sse-starlette-0.10.3 sseclient-py-1.7.2 starlette-0.16.0 strawberry-graphql-0.96.0 tenacity-8.1.0 threadpoolctl-3.1.0 tifffile-2022.10.10 toml-0.10.2 tzdata-2022.5 tzlocal-4.2 universal-analytics-python3-1.1.1 voxel51-eta-0.8.1 wrapt-1.14.1 wsproto-1.2.0 xmltodict-0.13.0
 
 ```
+
+
+```python
+(env2_det2) dhankar@dhankar-1:~/.../Obj_Detect_Detectron2$ pip install setuptools==59.5.0
+Collecting setuptools==59.5.0
+  Downloading setuptools-59.5.0-py3-none-any.whl (952 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 952.4/952.4 kB 12.9 MB/s eta 0:00:00
+Installing collected packages: setuptools
+  Attempting uninstall: setuptools
+    Found existing installation: setuptools 63.4.1
+    Uninstalling setuptools-63.4.1:
+      Successfully uninstalled setuptools-63.4.1
+Successfully installed setuptools-59.5.0
+(env2_det2) dhankar@dhankar-1:~/.../Obj_Detect_Detectron2$ python det2_2.py > term_det2_2__11_1_0150h_TRAIN.log
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████| 1000/1000 [00:03<00:00, 275.62it/s]
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████| 1000/1000 [00:03<00:00, 275.52it/s]
+
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████| 1000/1000 [00:03<00:00, 272.90it/s]
+Traceback (most recent call last):
+  File "/home/dhankar/temp/11_22/a___own_git_up/detect2/Obj_Detect_Detectron2/det2_2.py", line 498, in <module>
+    launch(train_data_custom,num_gpu,num_machines=1, machine_rank=0, dist_url="auto",args=(),)
+  File "/home/dhankar/temp/11_22/det2/detectron2/detectron2/engine/launch.py", line 82, in launch
+    main_func(*args)
+  File "/home/dhankar/temp/11_22/a___own_git_up/detect2/Obj_Detect_Detectron2/det2_2.py", line 456, in train_data_custom
+    train_coco_data.do_train(cfg_launch, model, resume=False) 
+  File "/home/dhankar/temp/11_22/a___own_git_up/detect2/Obj_Detect_Detectron2/det2_2.py", line 236, in do_train
+    data_loader = build_detection_train_loader(cfg)
+  File "/home/dhankar/temp/11_22/det2/detectron2/detectron2/config/config.py", line 207, in wrapped
+    explicit_args = _get_args_from_config(from_config, *args, **kwargs)
+  File "/home/dhankar/temp/11_22/det2/detectron2/detectron2/config/config.py", line 245, in _get_args_from_config
+    ret = from_config_func(*args, **kwargs)
+  File "/home/dhankar/temp/11_22/det2/detectron2/detectron2/data/build.py", line 344, in _train_loader_from_config
+    dataset = get_detection_dataset_dicts(
+  File "/home/dhankar/temp/11_22/det2/detectron2/detectron2/data/build.py", line 274, in get_detection_dataset_dicts
+    print_instances_class_histogram(dataset_dicts, class_names)
+  File "/home/dhankar/temp/11_22/det2/detectron2/detectron2/data/build.py", line 180, in print_instances_class_histogram
+    assert (
+AssertionError: Got an invalid category_id=18 for a dataset of 4 classes
+(env2_det2) dhankar@dhankar-1:~/.../Obj_Detect_Detectron2$ 
+
+```
+
+### I remember this ONE ---- 
+
+```python
+
+https://github.com/facebookresearch/detectron2/blob/c54429b60a64736c8b62002c5729eb818835f745/detectron2/data/build.py#L69
+
+        "Removed {} images with no usable annotations. {} images left.".format(
+
+```
+
+### ERROR -- CUDA Out of memory 
+
+```python
+
+(env2_det2) dhankar@dhankar-1:~/.../Obj_Detect_Detectron2$ 
+(env2_det2) dhankar@dhankar-1:~/.../Obj_Detect_Detectron2$ python det2_2.py > term_det2_2__11_1_0330h_TRAIN.log
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████| 10/10 [00:00<00:00, 271.78it/s]
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████| 10/10 [00:00<00:00, 274.46it/s]
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████| 10/10 [00:00<00:00, 273.69it/s]
+Traceback (most recent call last):
+  File "/home/dhankar/temp/11_22/a___own_git_up/detect2/Obj_Detect_Detectron2/det2_2.py", line 522, in <module>
+    launch(train_data_custom,num_gpu,num_machines=1, machine_rank=0, dist_url="auto",args=(),)
+  File "/home/dhankar/temp/11_22/det2/detectron2/detectron2/engine/launch.py", line 82, in launch
+    main_func(*args)
+  File "/home/dhankar/temp/11_22/a___own_git_up/detect2/Obj_Detect_Detectron2/det2_2.py", line 480, in train_data_custom
+    train_coco_data.do_train(cfg_launch, model, resume=False) 
+  File "/home/dhankar/temp/11_22/a___own_git_up/detect2/Obj_Detect_Detectron2/det2_2.py", line 251, in do_train
+    loss_dict = model(data_from_loader)  
+  File "/home/dhankar/anaconda3/envs/env2_det2/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/dhankar/temp/11_22/det2/detectron2/detectron2/modeling/meta_arch/rcnn.py", line 158, in forward
+    features = self.backbone(images.tensor)
+  File "/home/dhankar/anaconda3/envs/env2_det2/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/dhankar/temp/11_22/det2/detectron2/detectron2/modeling/backbone/fpn.py", line 155, in forward
+    prev_features = lateral_features + top_down_features
+RuntimeError: CUDA out of memory. Tried to allocate 194.00 MiB (GPU 0; 3.82 GiB total capacity; 2.15 GiB already allocated; 109.88 MiB free; 2.22 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+(env2_det2) dhankar@dhankar-1:~/.../Obj_Detect_Detectron2$ 
+
+```

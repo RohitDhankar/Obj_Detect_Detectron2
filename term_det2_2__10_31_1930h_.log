@@ -1,0 +1,13 @@
+---type-get_config- <class 'function'>
+-[INFO-get_gt_bbox_viz]---Type(test_image <class 'numpy.ndarray'>
+--[INFO-get_gt_bbox_viz]--type(default_predictor---
+ <class 'dict'>
+--[INFO-get_gt_bbox_viz]---type(default_predictor[instances] ---
+ <class 'detectron2.structures.instances.Instances'>
+--[INFO-get_gt_bbox_viz]---instance_obj--->pred_classes  tensor([16,  2,  2,  2], device='cuda:0')
+--[INFO-get_gt_bbox_viz]--instance_obj--->pred_classes >=1  tensor([16,  2,  2,  2], device='cuda:0')
+--[INFO-get_gt_bbox_viz]--instance_obj---> scores  tensor([0.9975, 0.9961, 0.9715, 0.7639], device='cuda:0')
+--[INFO-get_gt_bbox_viz]--instance_obj--->ls_pred_classes  [16, 2, 2, 2]
+--[INFO-get_gt_bbox_viz]--instance_obj--->ls_pred_scores  [0.997515082359314, 0.9960688352584839, 0.9715175628662109, 0.7639352679252625]
+--[INFO-get_gt_bbox_viz]--instance_obj---> first_obj_pred_class  16
+---instance_obj--->str(ls_pred_classes[0])-- 16
