@@ -16,6 +16,8 @@ to use it when it’s sufficient.
 
 
 import torch
+torch.cuda.empty_cache()
+
 from detectron2 import model_zoo
 from detectron2.engine import DefaultPredictor
 from detectron2.config import get_cfg as get_config
@@ -197,11 +199,11 @@ class train_coco_data():
         cfg.DATASETS.TEST = ()
         cfg.DATALOADER.NUM_WORKERS = 2
         cfg.MODEL.WEIGHTS = model_zoo.get_checkpoint_url("COCO-Detection/faster_rcnn_R_50_FPN_3x.yaml")
-        cfg.SOLVER.IMS_PER_BATCH = 4 # here INT Means INT COUNT of IMAGES in each BATCH 
+        cfg.SOLVER.IMS_PER_BATCH = 1 #4 # here INT Means INT COUNT of IMAGES in each BATCH 
         cfg.SOLVER.BASE_LR = 0.00025 # pick a good LR
-        cfg.SOLVER.MAX_ITER = 2000   # 
+        cfg.SOLVER.MAX_ITER = 1000   # 2k , 4 k etc . 
         cfg.SOLVER.STEPS = []        # do not decay learning rate
-        cfg.MODEL.ROI_HEADS.BATCH_SIZE_PER_IMAGE = 256 #128   == 256 X 4 = 1024
+        cfg.MODEL.ROI_HEADS.BATCH_SIZE_PER_IMAGE = 128 #256 #128   == 256 X 4 = 1024
         ## --[INFO_ORIGINAL_CODE]---NUM_ELE---pred_classes.numel()-- 1024 -- Calc Value 
         cfg.MODEL.ROI_HEADS.NUM_CLASSES = 4 
         cfg.MODEL.ROI_HEADS.SCORE_THRESH_TEST = 0.70
@@ -321,7 +323,7 @@ def get_std_data_dict():
 
 
     init_anno_path = "df_out_coco_urls.csv" ## dt_time_save
-    read_file_rows = 10#00 #30000 # 30K
+    read_file_rows = 100 #30000 # 30K
     chunk_idx = 0
 
     try:

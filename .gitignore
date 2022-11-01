@@ -2,6 +2,7 @@
 __pycache__/
 
 coco_val_images_2017/
+output_dir/
 
 
 
