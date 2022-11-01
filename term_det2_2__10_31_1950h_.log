@@ -1,0 +1,121 @@
+---type-get_config- <class 'function'>
+-[INFO-get_gt_bbox_viz]---image_file_local_2-- 000000289343
+--[INFO-get_gt_bbox_viz]--type(default_predictor---
+ <class 'dict'>
+--[INFO-get_gt_bbox_viz]---type(default_predictor[instances] ---
+ <class 'detectron2.structures.instances.Instances'>
+--[INFO-get_gt_bbox_viz]---instance_obj--->pred_classes  tensor([ 0, 16,  1, 13], device='cuda:0')
+--[INFO-get_gt_bbox_viz]--instance_obj--->pred_classes >=1  tensor([ 0, 16,  1, 13], device='cuda:0')
+--[INFO-get_gt_bbox_viz]--instance_obj---> scores  tensor([0.9964, 0.9890, 0.9423, 0.9282], device='cuda:0')
+--[INFO-get_gt_bbox_viz]--instance_obj--->ls_pred_classes  [0, 16, 1, 13]
+--[INFO-get_gt_bbox_viz]--instance_obj--->ls_pred_scores  [0.9963597655296326, 0.9889646768569946, 0.9422599673271179, 0.9281851649284363]
+--[INFO-get_gt_bbox_viz]--instance_obj---> first_obj_pred_class  0
+---instance_obj--->str(ls_pred_classes[0])-- 0
+-[INFO-get_gt_bbox_viz]---image_file_local_2-- 000000289343
+--[INFO-get_gt_bbox_viz]--type(default_predictor---
+ <class 'dict'>
+--[INFO-get_gt_bbox_viz]---type(default_predictor[instances] ---
+ <class 'detectron2.structures.instances.Instances'>
+--[INFO-get_gt_bbox_viz]---instance_obj--->pred_classes  tensor([ 0, 16,  1, 13], device='cuda:0')
+--[INFO-get_gt_bbox_viz]--instance_obj--->pred_classes >=1  tensor([ 0, 16,  1, 13], device='cuda:0')
+--[INFO-get_gt_bbox_viz]--instance_obj---> scores  tensor([0.9964, 0.9890, 0.9423, 0.9282], device='cuda:0')
+--[INFO-get_gt_bbox_viz]--instance_obj--->ls_pred_classes  [0, 16, 1, 13]
+--[INFO-get_gt_bbox_viz]--instance_obj--->ls_pred_scores  [0.9963597655296326, 0.9889646768569946, 0.9422599673271179, 0.9281851649284363]
+--[INFO-get_gt_bbox_viz]--instance_obj---> first_obj_pred_class  0
+---instance_obj--->str(ls_pred_classes[0])-- 0
+-[INFO-get_gt_bbox_viz]---image_file_local_2-- 000000289343
+--[INFO-get_gt_bbox_viz]--type(default_predictor---
+ <class 'dict'>
+--[INFO-get_gt_bbox_viz]---type(default_predictor[instances] ---
+ <class 'detectron2.structures.instances.Instances'>
+--[INFO-get_gt_bbox_viz]---instance_obj--->pred_classes  tensor([ 0, 16,  1, 13], device='cuda:0')
+--[INFO-get_gt_bbox_viz]--instance_obj--->pred_classes >=1  tensor([ 0, 16,  1, 13], device='cuda:0')
+--[INFO-get_gt_bbox_viz]--instance_obj---> scores  tensor([0.9964, 0.9890, 0.9423, 0.9282], device='cuda:0')
+--[INFO-get_gt_bbox_viz]--instance_obj--->ls_pred_classes  [0, 16, 1, 13]
+--[INFO-get_gt_bbox_viz]--instance_obj--->ls_pred_scores  [0.9963597655296326, 0.9889646768569946, 0.9422599673271179, 0.9281851649284363]
+--[INFO-get_gt_bbox_viz]--instance_obj---> first_obj_pred_class  0
+---instance_obj--->str(ls_pred_classes[0])-- 0
+-[INFO-get_gt_bbox_viz]---image_file_local_2-- 000000289343
+--[INFO-get_gt_bbox_viz]--type(default_predictor---
+ <class 'dict'>
+--[INFO-get_gt_bbox_viz]---type(default_predictor[instances] ---
+ <class 'detectron2.structures.instances.Instances'>
+--[INFO-get_gt_bbox_viz]---instance_obj--->pred_classes  tensor([ 0, 16,  1, 13], device='cuda:0')
+--[INFO-get_gt_bbox_viz]--instance_obj--->pred_classes >=1  tensor([ 0, 16,  1, 13], device='cuda:0')
+--[INFO-get_gt_bbox_viz]--instance_obj---> scores  tensor([0.9964, 0.9890, 0.9423, 0.9282], device='cuda:0')
+--[INFO-get_gt_bbox_viz]--instance_obj--->ls_pred_classes  [0, 16, 1, 13]
+--[INFO-get_gt_bbox_viz]--instance_obj--->ls_pred_scores  [0.9963597655296326, 0.9889646768569946, 0.9422599673271179, 0.9281851649284363]
+--[INFO-get_gt_bbox_viz]--instance_obj---> first_obj_pred_class  0
+---instance_obj--->str(ls_pred_classes[0])-- 0
+-[INFO-get_gt_bbox_viz]---image_file_local_2-- 000000061471
+--[INFO-get_gt_bbox_viz]--type(default_predictor---
+ <class 'dict'>
+--[INFO-get_gt_bbox_viz]---type(default_predictor[instances] ---
+ <class 'detectron2.structures.instances.Instances'>
+--[INFO-get_gt_bbox_viz]---instance_obj--->pred_classes  tensor([16, 61], device='cuda:0')
+--[INFO-get_gt_bbox_viz]--instance_obj--->pred_classes >=1  tensor([16, 61], device='cuda:0')
+--[INFO-get_gt_bbox_viz]--instance_obj---> scores  tensor([0.9923, 0.9765], device='cuda:0')
+--[INFO-get_gt_bbox_viz]--instance_obj--->ls_pred_classes  [16, 61]
+--[INFO-get_gt_bbox_viz]--instance_obj--->ls_pred_scores  [0.9923073649406433, 0.9764736890792847]
+--[INFO-get_gt_bbox_viz]--instance_obj---> first_obj_pred_class  16
+---instance_obj--->str(ls_pred_classes[0])-- 16
+-[INFO-get_gt_bbox_viz]---image_file_local_2-- 000000061471
+--[INFO-get_gt_bbox_viz]--type(default_predictor---
+ <class 'dict'>
+--[INFO-get_gt_bbox_viz]---type(default_predictor[instances] ---
+ <class 'detectron2.structures.instances.Instances'>
+--[INFO-get_gt_bbox_viz]---instance_obj--->pred_classes  tensor([16, 61], device='cuda:0')
+--[INFO-get_gt_bbox_viz]--instance_obj--->pred_classes >=1  tensor([16, 61], device='cuda:0')
+--[INFO-get_gt_bbox_viz]--instance_obj---> scores  tensor([0.9923, 0.9765], device='cuda:0')
+--[INFO-get_gt_bbox_viz]--instance_obj--->ls_pred_classes  [16, 61]
+--[INFO-get_gt_bbox_viz]--instance_obj--->ls_pred_scores  [0.9923073649406433, 0.9764736890792847]
+--[INFO-get_gt_bbox_viz]--instance_obj---> first_obj_pred_class  16
+---instance_obj--->str(ls_pred_classes[0])-- 16
+-[INFO-get_gt_bbox_viz]---image_file_local_2-- 000000061471
+--[INFO-get_gt_bbox_viz]--type(default_predictor---
+ <class 'dict'>
+--[INFO-get_gt_bbox_viz]---type(default_predictor[instances] ---
+ <class 'detectron2.structures.instances.Instances'>
+--[INFO-get_gt_bbox_viz]---instance_obj--->pred_classes  tensor([16, 61], device='cuda:0')
+--[INFO-get_gt_bbox_viz]--instance_obj--->pred_classes >=1  tensor([16, 61], device='cuda:0')
+--[INFO-get_gt_bbox_viz]--instance_obj---> scores  tensor([0.9923, 0.9765], device='cuda:0')
+--[INFO-get_gt_bbox_viz]--instance_obj--->ls_pred_classes  [16, 61]
+--[INFO-get_gt_bbox_viz]--instance_obj--->ls_pred_scores  [0.9923073649406433, 0.9764736890792847]
+--[INFO-get_gt_bbox_viz]--instance_obj---> first_obj_pred_class  16
+---instance_obj--->str(ls_pred_classes[0])-- 16
+-[INFO-get_gt_bbox_viz]---image_file_local_2-- 000000472375
+--[INFO-get_gt_bbox_viz]--type(default_predictor---
+ <class 'dict'>
+--[INFO-get_gt_bbox_viz]---type(default_predictor[instances] ---
+ <class 'detectron2.structures.instances.Instances'>
+--[INFO-get_gt_bbox_viz]---instance_obj--->pred_classes  tensor([16,  3,  3], device='cuda:0')
+--[INFO-get_gt_bbox_viz]--instance_obj--->pred_classes >=1  tensor([16,  3,  3], device='cuda:0')
+--[INFO-get_gt_bbox_viz]--instance_obj---> scores  tensor([0.9817, 0.9470, 0.7505], device='cuda:0')
+--[INFO-get_gt_bbox_viz]--instance_obj--->ls_pred_classes  [16, 3, 3]
+--[INFO-get_gt_bbox_viz]--instance_obj--->ls_pred_scores  [0.9816715121269226, 0.9469998478889465, 0.7505101561546326]
+--[INFO-get_gt_bbox_viz]--instance_obj---> first_obj_pred_class  16
+---instance_obj--->str(ls_pred_classes[0])-- 16
+-[INFO-get_gt_bbox_viz]---image_file_local_2-- 000000472375
+--[INFO-get_gt_bbox_viz]--type(default_predictor---
+ <class 'dict'>
+--[INFO-get_gt_bbox_viz]---type(default_predictor[instances] ---
+ <class 'detectron2.structures.instances.Instances'>
+--[INFO-get_gt_bbox_viz]---instance_obj--->pred_classes  tensor([16,  3,  3], device='cuda:0')
+--[INFO-get_gt_bbox_viz]--instance_obj--->pred_classes >=1  tensor([16,  3,  3], device='cuda:0')
+--[INFO-get_gt_bbox_viz]--instance_obj---> scores  tensor([0.9817, 0.9470, 0.7505], device='cuda:0')
+--[INFO-get_gt_bbox_viz]--instance_obj--->ls_pred_classes  [16, 3, 3]
+--[INFO-get_gt_bbox_viz]--instance_obj--->ls_pred_scores  [0.9816715121269226, 0.9469998478889465, 0.7505101561546326]
+--[INFO-get_gt_bbox_viz]--instance_obj---> first_obj_pred_class  16
+---instance_obj--->str(ls_pred_classes[0])-- 16
+-[INFO-get_gt_bbox_viz]---image_file_local_2-- 000000472375
+--[INFO-get_gt_bbox_viz]--type(default_predictor---
+ <class 'dict'>
+--[INFO-get_gt_bbox_viz]---type(default_predictor[instances] ---
+ <class 'detectron2.structures.instances.Instances'>
+--[INFO-get_gt_bbox_viz]---instance_obj--->pred_classes  tensor([16,  3,  3], device='cuda:0')
+--[INFO-get_gt_bbox_viz]--instance_obj--->pred_classes >=1  tensor([16,  3,  3], device='cuda:0')
+--[INFO-get_gt_bbox_viz]--instance_obj---> scores  tensor([0.9817, 0.9470, 0.7505], device='cuda:0')
+--[INFO-get_gt_bbox_viz]--instance_obj--->ls_pred_classes  [16, 3, 3]
+--[INFO-get_gt_bbox_viz]--instance_obj--->ls_pred_scores  [0.9816715121269226, 0.9469998478889465, 0.7505101561546326]
+--[INFO-get_gt_bbox_viz]--instance_obj---> first_obj_pred_class  16
+---instance_obj--->str(ls_pred_classes[0])-- 16
