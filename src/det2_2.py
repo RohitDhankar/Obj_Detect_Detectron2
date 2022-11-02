@@ -40,10 +40,16 @@ from detectron2.data import (
     build_detection_train_loader,
 )
 
+from detectron2.evaluation import COCOEvaluator, inference_on_dataset
+from detectron2.data import build_detection_test_loader
+
 
 from datetime import datetime
 dt_time_now = datetime.now()
 dt_time_save = dt_time_now.strftime("_%m_%d_%Y_%H_%M_")
+detectron2_output_dir = './output_dir/_'+str(dt_time_save)+'_/' #saving the --model_final.pth 
+coco_eval_output_dir = detectron2_output_dir+"_coco_eval_output_dir_/"
+
 
 import pandas as pd
 import json , cv2 , os
@@ -283,7 +289,6 @@ class train_coco_data():
                         writer.write()
                 periodic_checkpointer.step(iteration)
 
-
     
 def get_std_data_dict():
     """
@@ -326,7 +331,7 @@ def get_std_data_dict():
     """
 
 
-    init_anno_path = "df_out_coco_urls.csv" ## dt_time_save
+    init_anno_path = "./input_dir/df_out_coco_urls.csv" ## dt_time_save
     read_file_rows = 100 #30000 # 30K
     chunk_idx = 0
 
@@ -500,15 +505,96 @@ def train_data_custom():
     """
 
 
+def get_eval_data_dict():
+    """ """
+
+
+def eval_validation_set(custom_dataset_name):
+    """
+    Args:
+
+    Returns:
+
+   
+    # ORIGINAL COMMENT Detectron2 -- Inference should use the config with parameters that are used in training
+    # cfg now already contains everything we've set previously. We changed it a little bit for inference:
+    
+    For Running the EVALUATION / VALIDATION on the VALIDATION SET we are required to again - REGISTER the VALIDATION Dataset separately , from the TRAIN data. 
+    As an aside - for TEST DATA runs - we dont need to REGISTER the data again .
+
+    """
+
+    dict_coco_classes = {
+            #"dog":18,
+            "person":0,
+            "bicycle":1,
+            "car":2,
+            "motorcycle":3
+        }
+
+    eval_dataset_name = "coco_eval_data_3" 
+    
+    DatasetCatalog.register(eval_dataset_name,get_eval_data_dict) #eval dataset registry -- get_eval_data_dict
+    coco_eval_data_dict_Registered = DatasetCatalog.get(eval_dataset_name) 
+    len_registered_eval_dict = len(coco_eval_data_dict_Registered)
+    print("--[INFO-eval_validation_set]--coco_eval_data_dict_Registered--",len_registered_eval_dict)
+
+    coco_classes = ["person","bicycle","car","motorcycle"]
+    MetadataCatalog.get(eval_dataset_name).set(thing_classes=coco_classes) 
+    classes = MetadataCatalog.get(eval_dataset_name).thing_classes
+    print("--[INFO-eval_validation_set]---MetadataCatalog___len_Classes:",len(classes))
+    print("--[INFO-eval_validation_set]---MetadataCatalog___NAME_Classes:",classes)
+
+    coco_eval_data_evalMetadata = MetadataCatalog.get(eval_dataset_name)
+    print("--[INFO-eval_validation_set]--NOW_SET>> thing_classes---MetadataCatalog__coco_eval_data_evalMetadata:",coco_eval_data_evalMetadata)
+    #os.chdir(detectron2_output_dir)
+    eval_appch_metaData = MetadataCatalog.get(eval_dataset_name)
+    print("-[INFO-eval_validation_set]-eval_appch_vids--MetadataCatalog__eval_appch_metaData:",eval_appch_metaData)
+
+    cfg = get_config()
+    cfg.merge_from_file(model_zoo.get_config_file("COCO-Detection/faster_rcnn_R_50_FPN_3x.yaml"))
+    #cfg.merge_from_file(model_zoo.get_config("COCO-Detection/faster_rcnn_R_50_FPN_3x.yaml",trained=True))
+    print("-[INFO-eval_validation_set]-cfg--initial merged from file___>>\n",cfg)
+    
+    cfg.OUTPUT_DIR = detectron2_output_dir # Global Var with HouR DIR Suffix
+    cfg.MODEL.WEIGHTS = os.path.join(cfg.OUTPUT_DIR,"model_final.pth")  
+    cfg.MODEL.ROI_HEADS.NUM_CLASSES = 4 
+    cfg.MODEL.ROI_HEADS.SCORE_THRESH_TEST = 0.70
+    cfg.DATASETS.TEST = (str(eval_dataset_name),)   
+
+    print("-[INFO-eval_validation_set]-cfg--APPENDED_TO___>>\n",cfg)
+    predictor = DefaultPredictor(cfg)
+ 
+    evaluator = COCOEvaluator(eval_dataset_name, output_dir=coco_eval_output_dir)
+    eval_dataset_loader = build_detection_test_loader(cfg, eval_dataset_name)
+    print("--[INFO-eval_validation_set]---COCOEvaluator_output--\n")
+    print(inference_on_dataset(predictor.model,eval_dataset_loader,evaluator)) 
+  
+    if torch.cuda.is_available():
+        predictor.model = predictor.model.to('cuda') ## cuda:2 >> RuntimeError: CUDA error: invalid device ordinal
+        predictor.cfg.MODEL.DEVICE = 'cuda' #TODO -- Need to do the MULTIPLE GPU Eval 
+
+    print("--[INFO-eval_validation_set]---type(predictor----",type(predictor))
+    print("--[INFO-eval_validation_set]--type(predictor----",predictor)
+    str_score_thresh_for_viz = str(cfg.MODEL.ROI_HEADS.SCORE_THRESH_TEST)
+    print("--[INFO-eval_validation_set]--str_score_thresh_for_viz---",str_score_thresh_for_viz)
+    
+    image_temp_counter = 1 
+
+    for iter_k in range(len_registered_eval_dict):
+        eval_image = coco_eval_data_dict_Registered[iter_k]["file_name"]
+
+
+
 
 if __name__ == "__main__":
-    detectron2_output_dir = "./output_dir/" #
+    detectron2_output_dir = './output_dir/_'+str(dt_time_save)+'_/' #saving the --model_final.pth 
     str_score_thresh_for_viz = 0.70 ## ANYYTHING BELOW 70% AND IS IDENTIFIED AS A CATEGORY OF THE OBJECTS --- THAT IS ACTUALLY A FALSE POSITIVE 
     coco_data_metaData = "TODO"
     coco_image_forViz = "TODO"
 
     obj_std_dicts = std_data_dicts()
-    init_anno_path = "df_out_coco_urls.csv" ## dt_time_save
+    init_anno_path = "./input_dir/df_out_coco_urls.csv" ## dt_time_save
     # read_file_rows = 100 #30000 # 30K
     # chunk_idx = 0
 

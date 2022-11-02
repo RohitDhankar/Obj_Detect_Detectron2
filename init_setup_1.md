@@ -1,5 +1,12 @@
 
 
+### Run the Training Code 
+~~~
+(env2_det2) $ python src/det2_2.py > output_dir/terminal_logs/term_det2_2__11_2_1900h_TRAIN_100_.log
+
+~~~
+
+
 ### Am well aware the below CODE / TEXT is Not Python 
 
 ```python
