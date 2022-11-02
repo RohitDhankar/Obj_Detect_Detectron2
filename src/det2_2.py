@@ -1,6 +1,10 @@
 
 
 
+# python det2_2.py > ./output_dir/terminal_logs/term_det2_2__11_2_0010h_TRAIN_100.log
+
+
+
 ## Local Path this file -- /Obj_Detect_Detectron2/det2_2.py
 ## Register a Data Set in the Detectron2 format 
 # SOURCE -- https://detectron2.readthedocs.io/en/latest/tutorials/datasets.html?highlight=bbox_mode#standard-dataset-dicts
@@ -184,7 +188,7 @@ class train_coco_data():
     def setup(custom_dataset_name,args):
         """
         Args: custom_dataset_name :- STR
-              args :- 
+              args :- dict
 
         Returns: Create configs and perform basic setups.
                  Code taken mostly- AS-IS from Detectron2 Documentation - for the LAUNCH method 
@@ -204,10 +208,10 @@ class train_coco_data():
         cfg.SOLVER.MAX_ITER = 1000   # 2k , 4 k etc . 
         cfg.SOLVER.STEPS = []        # do not decay learning rate
         cfg.MODEL.ROI_HEADS.BATCH_SIZE_PER_IMAGE = 128 #256 #128   == 256 X 4 = 1024
-        ## --[INFO_ORIGINAL_CODE]---NUM_ELE---pred_classes.numel()-- 1024 -- Calc Value 
+        ## TODO --[INFO_ORIGINAL_CODE]---NUM_ELE---pred_classes.numel()-- 1024 -- Calc Value 
         cfg.MODEL.ROI_HEADS.NUM_CLASSES = 4 
         cfg.MODEL.ROI_HEADS.SCORE_THRESH_TEST = 0.70
-        cfg.OUTPUT_DIR = './output_dir/'#+str(dt_time_save)+"/" ## detect2_output_dir 
+        cfg.OUTPUT_DIR = './output_dir/_'+str(dt_time_save)+'_/' #saving the --model_final.pth 
         os.makedirs(cfg.OUTPUT_DIR, exist_ok=True)
         print("--[INFO-setup]--detect2_output_dir---\n",cfg.OUTPUT_DIR)
         print("--[INFO-setup]--CONFIG going to build_model(cfg)__\n",cfg)
@@ -456,7 +460,7 @@ def train_data_custom():
     coco_eval_data_Metadata = MetadataCatalog.get("coco_eval_data_2")
     print("--[INFO-train_data_custom]--NOW_SET>> thing_classes---:",coco_eval_data_Metadata)
 
-    args_default_init = default_argument_parser().parse_args()
+    args_default_init = default_argument_parser().parse_args() #
     print("[INFO-train_data_custom]--args_default_init---:", type(args_default_init)) 
     print("[INFO-train_data_custom]--args_default_init--1-:", args_default_init) #
     #Namespace(config_file='', dist_url='tcp://127.0.0.1:50152', eval_only=False, machine_rank=0, num_gpus=1, num_machines=1, opts=[], resume=False)
@@ -499,7 +503,7 @@ def train_data_custom():
 
 if __name__ == "__main__":
     detectron2_output_dir = "./output_dir/" #
-    str_score_thresh_for_viz = 0.70
+    str_score_thresh_for_viz = 0.70 ## ANYYTHING BELOW 70% AND IS IDENTIFIED AS A CATEGORY OF THE OBJECTS --- THAT IS ACTUALLY A FALSE POSITIVE 
     coco_data_metaData = "TODO"
     coco_image_forViz = "TODO"
 
@@ -522,4 +526,3 @@ if __name__ == "__main__":
     
     num_gpu = 1
     launch(train_data_custom,num_gpu,num_machines=1, machine_rank=0, dist_url="auto",args=(),)
-
